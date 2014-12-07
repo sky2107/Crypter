@@ -48,13 +48,26 @@ public class CrypterCaesar extends CrypterFactory {
 		return keyCode;
 	}
 
+	private String encryptMessage;
+
 	/**
+	 * the decoded message
 	 * 
+	 * @return encryptMessage
+	 */
+	public String getEncryptMessage() {
+		return encryptMessage;
+	}
+
+	/**
+	 * decoding Caesar system
 	 */
 	@Override
 	public String encrypt(String message) throws CrypterException {
 
-		return caesarEncrypt(setNewText(message));
+		this.encryptMessage = caesarEncrypt(setNewText(message));
+
+		return encryptMessage;
 
 	}
 
@@ -67,12 +80,52 @@ public class CrypterCaesar extends CrypterFactory {
 			grenzeTest = message.charAt(index) + getKey();
 			if (grenzeTest <= 90) {
 				secretMessage += (char) (grenzeTest);
-			}else{
-				secretMessage += (char) (grenzeTest-26);
+			} else {
+				secretMessage += (char) (grenzeTest - 26);
 			}
 		}
 
 		return secretMessage;
+	}
+
+	private String decryptMessage;
+
+	/**
+	 * Original message
+	 * 
+	 * @return decryptMessage
+	 */
+	public String getDecryptMessage() {
+		return decryptMessage;
+	}
+
+	/**
+	 * finally to get the original message
+	 */
+	@Override
+	public String decrypt(String cypherText) throws CrypterException {
+
+		if (cypherText == getEncryptMessage()) {
+			return caesarDecrypt(getEncryptMessage());
+		}
+
+		return caesarDecrypt(cypherText);
+	}
+
+	private String caesarDecrypt(String message) {
+
+		message = getEncryptMessage();
+		String originalMessage = "";
+		int grenzeTest = 0;
+
+		for (int index = 0; index < message.length(); index++) {
+			grenzeTest = message.charAt(index) - getKey();
+
+			originalMessage += (char) (grenzeTest);
+
+		}
+
+		return originalMessage;
 	}
 
 	/**
@@ -80,15 +133,6 @@ public class CrypterCaesar extends CrypterFactory {
 	 */
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public String decrypt(String cypherText) throws CrypterException {
 		// TODO Auto-generated method stub
 		return null;
 	}
