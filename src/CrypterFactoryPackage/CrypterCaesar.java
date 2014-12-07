@@ -8,7 +8,9 @@ import java.util.List;
 import Exception.CrypterException;
 
 /**
- * @author user
+ * Caesar de and encoding System via KEY movement with the A-Z
+ * 
+ * @author Adrian, Marcel and Felix
  *
  */
 public class CrypterCaesar extends CrypterFactory {
@@ -88,6 +90,9 @@ public class CrypterCaesar extends CrypterFactory {
 		return secretMessage;
 	}
 
+	/**
+	 * decrypted message
+	 */
 	private String decryptMessage;
 
 	/**
@@ -129,22 +134,64 @@ public class CrypterCaesar extends CrypterFactory {
 	}
 
 	/**
-	 * 
+	 * to get the encrypted List
 	 */
+	private List<String> encryptListe;
+
+	public List<String> getEncryptListe() {
+		return encryptListe;
+	};
+
+	/**
+	 * various Messages encrypted via util List
+	 */
+	@SuppressWarnings("null")
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<String> encryptListe = null;
+
+		if (messages.isEmpty()) {
+			return null;
+		}
+		for (int index = 0; index <= messages.lastIndexOf(messages); index++) {
+			encryptListe.add(index, encrypt(setNewText(messages.get(index))));
+		}
+
+		this.encryptListe = encryptListe;
+
+		return encryptListe;
 	}
 
 	/**
-	 * 
+	 * getting the original List
+	 */
+	private List<String> originalList;
+
+	public List<String> getOriginalList() {
+		return originalList;
+	};
+
+	/**
+	 * Original List
 	 */
 	@Override
 	public List<String> decrypt(List<String> cypherTexte)
 			throws CrypterException {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> encryptListe = null;
+
+		if (cypherTexte.isEmpty()) {
+			return null;
+		}
+		for (int index = 0; index <= cypherTexte.lastIndexOf(cypherTexte); index++) {
+			encryptListe
+					.add(index, decrypt(setNewText(cypherTexte.get(index))));
+		}
+
+		this.originalList = encryptListe;
+
+		return encryptListe;
+
 	}
 
 }
