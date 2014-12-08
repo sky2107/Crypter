@@ -18,30 +18,14 @@ public class CrypterCaesar extends CrypterFactory {
 	private int keyCode;
 	private String key;
 
-	public CrypterCaesar(String message, String key) {
+	public CrypterCaesar(String key) {
 
-		setKey(key);
-		;
-		this.keyCode = (int) key.charAt(0);
-		this.keyCode = Konstanten.CAESAR.getStartingPoint(getKey());
-
-		setNewText(message);
+		//this.keyCode = Konstanten.CAESAR.getStartingPoint((int) key.charAt(0));
+		
+		this.keyCode= ( int ) key.charAt(0) - Konstanten.CAESAR.getFIRST_LETTER()+1;
 
 	}
 
-	/**
-	 * 
-	 * @param key
-	 */
-	private void setKey(String key) {
-
-		// only Capital letters any other sign will automatically tur to A
-		if (key.charAt(0) <= 65 || key.charAt(0) >= 90) {
-			key = "A";
-		}
-
-		this.key = key;
-	}
 
 	/**
 	 * @return the key
@@ -129,6 +113,8 @@ public class CrypterCaesar extends CrypterFactory {
 			originalMessage += (char) (grenzeTest);
 
 		}
+		
+		this.decryptMessage= originalMessage;
 
 		return originalMessage;
 	}

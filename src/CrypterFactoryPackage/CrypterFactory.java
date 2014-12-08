@@ -35,6 +35,13 @@ public abstract class CrypterFactory implements ICrypter {
 	}
 
 	private String enteringText(String message) {
+		
+		int firstCapitals = ( int )FIRSTLETTER;
+		int lastCapitals = ( int )LASTLETTER;
+		int first = ( int )SMALL_FIRSTLETTER;
+		int last = ( int )SMALL_LASTLETTER;
+		
+		
 
 		String newText = "";
 
@@ -47,11 +54,11 @@ public abstract class CrypterFactory implements ICrypter {
 			// letters
 			for (int index = 0; index < message.length(); index++) {
 				char forTransforming = message.charAt(index);
-				if (message.charAt(index) >= FISRTLETTER
-						|| message.charAt(index) <= LASTLETTER) {
+				if (message.charAt(index) >= firstCapitals
+						&& message.charAt(index) <= lastCapitals) {
 					newText += message.charAt(index);
-				} else if (message.charAt(index) >= SMALL_FISRTLETTER
-						|| message.charAt(index) <= SMALL_LASTLETTER) {
+				} else if (message.charAt(index) >= first
+						&& message.charAt(index) <= last) {
 					forTransforming = (char) (message.charAt(index) - 32);
 					newText += forTransforming;
 				} else {

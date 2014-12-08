@@ -29,9 +29,9 @@ public interface ICrypter {
 	 * barrier where the codes are in action
 	 * 65 - 90 unicode reference
 	 */
-	public static final char FISRTLETTER = 'A';
+	public static final char FIRSTLETTER = 'A';
 	public static final char LASTLETTER = 'Z';
-	public static final char SMALL_FISRTLETTER = 'a';
+	public static final char SMALL_FIRSTLETTER = 'a';
 	public static final char SMALL_LASTLETTER = 'z';
 	
 	/**

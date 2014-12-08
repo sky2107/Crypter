@@ -49,10 +49,11 @@ public enum Konstanten {
 	public int getStartingPoint(int key){
 		
 		//for the beginning 1 - 26 are allowed for the key
-		if (key == 0 || key <0 || key >91){
+		if (key == 0 || key <65 || key >91){
 			key = 1;
+		}else{
+			key= key - (getLAST_LETTER()-1) ;
 		}
-		
 		
 		final int STARTING_POINT = getFIRST_LETTER()+key;
 		
