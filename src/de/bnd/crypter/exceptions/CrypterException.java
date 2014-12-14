@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Exception;
+package de.bnd.crypter.exceptions;
 
 /**
  * @author user
