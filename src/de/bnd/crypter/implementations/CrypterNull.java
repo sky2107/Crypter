@@ -9,7 +9,7 @@ import de.bnd.crypter.interfaces.Crypter;
 public class CrypterNull extends AbstractCrypter {
 
 	public CrypterNull() throws IllegalKeyException {
-		super("");
+		super(" ");
 	}
 
 	@Override

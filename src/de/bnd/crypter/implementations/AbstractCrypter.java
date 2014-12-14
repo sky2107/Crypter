@@ -12,7 +12,7 @@ public abstract class AbstractCrypter implements Crypter {
 	private final String key;
 
 	public AbstractCrypter(String key) throws IllegalKeyException {
-		if (isKeyValid(key))
+		if (isKeyValid(key)&&key.matches("[A-Z ]+"))
 			this.key = key;
 		else
 			throw new IllegalKeyException();

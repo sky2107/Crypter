@@ -6,7 +6,7 @@ import de.bnd.crypter.exceptions.IllegalKeyException;
 public class CrypterReverse extends AbstractCrypter {
 
 	public CrypterReverse() throws IllegalKeyException {
-		super("");
+		super(" ");
 	}
 
 	@Override
