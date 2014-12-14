@@ -4,10 +4,11 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import de.bnd.crypter.exceptions.CrypterException;
+import de.bnd.crypter.exceptions.IllegalKeyException;
 
 public class CrypterCaesar extends AbstractCrypter {
 
-	public CrypterCaesar(String key) {
+	public CrypterCaesar(String key) throws IllegalKeyException {
 		super(key);
 	}
 
@@ -54,6 +55,11 @@ public class CrypterCaesar extends AbstractCrypter {
 
 	private int charToInt(char c) {
 		return c - 'A';
+	}
+
+	@Override
+	public boolean isKeyValid(String key) {
+		return true;
 	}
 
 }

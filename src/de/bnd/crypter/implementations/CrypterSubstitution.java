@@ -1,10 +1,11 @@
 package de.bnd.crypter.implementations;
 
 import de.bnd.crypter.exceptions.CrypterException;
+import de.bnd.crypter.exceptions.IllegalKeyException;
 
 public class CrypterSubstitution extends AbstractCrypter {
 
-	public CrypterSubstitution(String key) {
+	public CrypterSubstitution(String key) throws IllegalKeyException {
 		super(key);
 	}
 
@@ -26,6 +27,11 @@ public class CrypterSubstitution extends AbstractCrypter {
 			s.append((char)(pos + 'A'));
 		}
 		return s.toString();
+	}
+
+	@Override
+	public boolean isKeyValid(String key) {
+		return true;
 	}
 
 }

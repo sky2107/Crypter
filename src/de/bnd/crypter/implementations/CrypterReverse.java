@@ -1,11 +1,12 @@
 package de.bnd.crypter.implementations;
 
 import de.bnd.crypter.exceptions.CrypterException;
+import de.bnd.crypter.exceptions.IllegalKeyException;
 
 public class CrypterReverse extends AbstractCrypter {
 
-	public CrypterReverse(String key) {
-		super(key);
+	public CrypterReverse() throws IllegalKeyException {
+		super("");
 	}
 
 	@Override
@@ -23,6 +24,11 @@ public class CrypterReverse extends AbstractCrypter {
 		b.append(s);
 		b.reverse();
 		return b.toString();
+	}
+
+	@Override
+	public boolean isKeyValid(String key) {
+		return true;
 	}
 
 }

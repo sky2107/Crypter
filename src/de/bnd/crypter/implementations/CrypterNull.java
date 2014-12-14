@@ -3,12 +3,13 @@ package de.bnd.crypter.implementations;
 import java.util.List;
 
 import de.bnd.crypter.exceptions.CrypterException;
+import de.bnd.crypter.exceptions.IllegalKeyException;
 import de.bnd.crypter.interfaces.Crypter;
 
 public class CrypterNull extends AbstractCrypter {
 
-	public CrypterNull(String key) {
-		super(key);
+	public CrypterNull() throws IllegalKeyException {
+		super("");
 	}
 
 	@Override
@@ -29,6 +30,11 @@ public class CrypterNull extends AbstractCrypter {
 	@Override
 	public List<String> decrypt(List<String> cypherTexte) throws CrypterException {
 		return cypherTexte;
+	}
+
+	@Override
+	public boolean isKeyValid(String key) {
+		return true;
 	}
 
 }

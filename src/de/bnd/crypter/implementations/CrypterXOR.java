@@ -1,10 +1,11 @@
 package de.bnd.crypter.implementations;
 
 import de.bnd.crypter.exceptions.CrypterException;
+import de.bnd.crypter.exceptions.IllegalKeyException;
 
 public class CrypterXOR extends AbstractCrypter {
 
-	public CrypterXOR(String key) {
+	public CrypterXOR(String key) throws IllegalKeyException {
 		super(key);
 	}
 
@@ -32,6 +33,11 @@ public class CrypterXOR extends AbstractCrypter {
 		}
 
 		return s.toString();
+	}
+
+	@Override
+	public boolean isKeyValid(String key) {
+		return true;
 	}
 
 }
