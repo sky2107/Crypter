@@ -1,19 +1,14 @@
 package de.bnd.crypter.implementations;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import de.bnd.crypter.exceptions.CrypterException;
-import de.bnd.crypter.interfaces.Crypter;
 
-public class CrypterCaesar implements Crypter {
+public class CrypterCaesar extends AbstractCrypter {
 
-	private final char key;
-
-	public CrypterCaesar(char key) {
-		this.key = key;
+	public CrypterCaesar(String key) {
+		super(key);
 	}
 
 	@Override
@@ -22,26 +17,8 @@ public class CrypterCaesar implements Crypter {
 	}
 
 	@Override
-	public List<String> encrypt(List<String> messages) throws CrypterException {
-		List<String> result = new ArrayList<String>();
-		for (String s : messages) {
-			result.add(encrypt(s));
-		}
-		return result;
-	}
-
-	@Override
 	public String decrypt(String cypherText) throws CrypterException {
 		return convertString(cypherText, (c) -> (decryptChar(c)));
-	}
-
-	@Override
-	public List<String> decrypt(List<String> cypherText) throws CrypterException {
-		List<String> result = new ArrayList<String>();
-		for (String s : cypherText) {
-			result.add(decrypt(s));
-		}
-		return result;
 	}
 
 	private char encryptChar(char x) {
@@ -54,7 +31,7 @@ public class CrypterCaesar implements Crypter {
 
 	private char convertChar(char x, BiFunction<Integer, Integer, Integer> f) {
 		int val = charToInt(x);
-		int k = charToInt(key);
+		int k = charToInt(getKey().charAt(0));
 		int res = f.apply(val, k) < 0 ? 26 + f.apply(val, k) : f.apply(val, k) % 26;
 		return intToChar(res);
 	}

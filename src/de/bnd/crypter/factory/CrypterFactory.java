@@ -5,6 +5,10 @@ package de.bnd.crypter.factory;
 
 import de.bnd.crypter.exceptions.IllegalKeyException;
 import de.bnd.crypter.implementations.CrypterCaesar;
+import de.bnd.crypter.implementations.CrypterNull;
+import de.bnd.crypter.implementations.CrypterReverse;
+import de.bnd.crypter.implementations.CrypterSubstitution;
+import de.bnd.crypter.implementations.CrypterXOR;
 import de.bnd.crypter.interfaces.Crypter;
 
 /**
@@ -30,13 +34,13 @@ public class CrypterFactory {
 		case CAESAR:
 			return new CrypterCaesar(key.charAt(0));
 		case SUBSTITUTION:
-			// TODO
+			return new CrypterSubstitution(key);
 		case REVERSE:
-			// TODO
+			return new CrypterReverse();
 		case XOR:
-			// TODO
+			return new CrypterXOR(key);
 		case NULL:
-			// TODO
+			return new CrypterNull();
 		}
 
 		return null;
