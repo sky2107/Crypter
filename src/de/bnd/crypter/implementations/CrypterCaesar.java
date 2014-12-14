@@ -8,11 +8,11 @@ import java.util.function.Function;
 import de.bnd.crypter.exceptions.CrypterException;
 import de.bnd.crypter.interfaces.Crypter;
 
-public class CaesarCrypter implements Crypter {
+public class CrypterCaesar implements Crypter {
 
 	private final char key;
 
-	public CaesarCrypter(char key) {
+	public CrypterCaesar(char key) {
 		this.key = key;
 	}
 

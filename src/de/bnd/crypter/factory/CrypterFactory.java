@@ -4,7 +4,7 @@
 package de.bnd.crypter.factory;
 
 import de.bnd.crypter.exceptions.IllegalKeyException;
-import de.bnd.crypter.implementations.CaesarCrypter;
+import de.bnd.crypter.implementations.CrypterCaesar;
 import de.bnd.crypter.interfaces.Crypter;
 
 /**
@@ -28,7 +28,7 @@ public class CrypterFactory {
 
 		switch (type) {
 		case CAESAR:
-			return new CaesarCrypter(key.charAt(0));
+			return new CrypterCaesar(key.charAt(0));
 		case SUBSTITUTION:
 			// TODO
 		case REVERSE:
