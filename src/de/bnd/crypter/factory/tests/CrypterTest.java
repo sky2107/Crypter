@@ -79,7 +79,7 @@ public class CrypterTest {
 
 	@Test
 	public void testDecryptStringXOR() throws CrypterException {
-		testDecrypt(xor,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","URFVPJB[]ZN^XBJCEBVF@ZRKMJ");
+		testDecrypt(xor,"URFVPJB[]ZN^XBJCEBVF@ZRKMJ","ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	}
 	
 	public void testDecrypt(Crypter c,String a, String b) throws CrypterException{
