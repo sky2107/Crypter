@@ -9,7 +9,11 @@ import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 import de.bnd.crypter.factory.interfaces.Crypter;
 import de.bnd.crypter.factory.iterators.IterableCrypter;
-
+/**
+ * 
+ * @author Adrian, Marcel und Felix
+ *
+ */
 public class IterableCrypterDemo {
 
 	public static void main(String[] args) throws IllegalKeyException, CrypterException {

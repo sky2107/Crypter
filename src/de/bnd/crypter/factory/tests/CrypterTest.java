@@ -13,7 +13,13 @@ import de.bnd.crypter.factory.CrypterFactory;
 import de.bnd.crypter.factory.CrypterFactory.CrypterType;
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.interfaces.Crypter;
-
+/**
+ * 
+ * All five crypters will be tested via JUNIT
+ * 
+ * @author Adrian, Marcel und Felix
+ *
+ */
 public class CrypterTest {
 
 	Crypter cae;

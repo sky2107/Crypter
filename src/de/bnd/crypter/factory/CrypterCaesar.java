@@ -5,9 +5,19 @@ import java.util.function.Function;
 
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
-
+/**
+ * Caesar crypter
+ * 
+ * @author Adrian, Marcel und Felix
+ *
+ */
 class CrypterCaesar extends AbstractCrypter {
 
+	/**
+	 * 
+	 * @param key
+	 * @throws IllegalKeyException
+	 */
 	public CrypterCaesar(String key) throws IllegalKeyException {
 		super(key);
 	}
@@ -22,14 +32,27 @@ class CrypterCaesar extends AbstractCrypter {
 		return convertString(cypherText, (c) -> (decryptChar(c)));
 	}
 
+	/**
+	 * 
+	 * @param key
+	 * @throws IllegalKeyException
+	 */
 	private char encryptChar(char x) {
 		return convertChar(x, (val, k) -> (val + k));
 	}
 
+	/**
+	 * 
+	 * @param x
+	 * @return
+	 */
 	private char decryptChar(char x) {
 		return convertChar(x, (val, k) -> (val - k));
 	}
 
+	/**
+	 * 
+	 */
 	private char convertChar(char x, BiFunction<Integer, Integer, Integer> f) {
 		int val = charToInt(x);
 		int k = charToInt(getKey().charAt(0));
@@ -37,6 +60,13 @@ class CrypterCaesar extends AbstractCrypter {
 		return intToChar(res);
 	}
 
+	/**
+	 * 
+	 * @param message
+	 * @param f
+	 * @return
+	 * @throws CrypterException
+	 */
 	private String convertString(String message, Function<Character, Character> f) throws CrypterException {
 
 		StringBuilder s = new StringBuilder();
@@ -49,10 +79,20 @@ class CrypterCaesar extends AbstractCrypter {
 
 	}
 
+	/**
+	 * 
+	 * @param c
+	 * @return
+	 */
 	private char intToChar(int c) {
 		return (char) (c + 'A');
 	}
 
+	/**
+	 * 
+	 * @param c
+	 * @return
+	 */
 	private int charToInt(char c) {
 		return c - 'A';
 	}

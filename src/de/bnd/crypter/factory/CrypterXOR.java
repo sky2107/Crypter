@@ -2,13 +2,28 @@ package de.bnd.crypter.factory;
 
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
-
+/**
+ * XOR crypter with special symbols
+ * 
+ * @author Adrian, Marcel und Felix
+ *
+ */
 class CrypterXOR extends AbstractCrypter {
 
+	/**
+	 * 
+	 * @param key
+	 * @throws IllegalKeyException
+	 */
 	public CrypterXOR(String key) throws IllegalKeyException {
 		super(key);
 	}
 
+	/**
+	 * 
+	 * @param i
+	 * @return
+	 */
 	private char mapInt(int i) {
 		int res;
 		switch (i) {
@@ -37,6 +52,11 @@ class CrypterXOR extends AbstractCrypter {
 		return (char) res;
 	}
 
+	/**
+	 * 
+	 * @param c
+	 * @return
+	 */
 	private int mapChar(char c) {
 		int res;
 		switch (c) {
@@ -65,6 +85,12 @@ class CrypterXOR extends AbstractCrypter {
 		return res;
 	}
 
+	/**
+	 * 
+	 * @param value
+	 * @param key
+	 * @return
+	 */
 	private char encryptChar(char value, char key) {
 		int v = mapChar(value);
 		int k = mapChar(key);
