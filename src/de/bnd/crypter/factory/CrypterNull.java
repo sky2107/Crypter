@@ -4,9 +4,20 @@ import java.util.List;
 
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
-
+/**
+ * Null crypter
+ * 
+ * with a constant key A
+ * 
+ * @author Adrian, Marcel und Felix
+ *
+ */
 class CrypterNull extends AbstractCrypter {
 
+	/**
+	 * 
+	 * @throws IllegalKeyException
+	 */
 	public CrypterNull() throws IllegalKeyException {
 		super("A");
 	}

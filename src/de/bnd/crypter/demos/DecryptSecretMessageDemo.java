@@ -5,7 +5,11 @@ import de.bnd.crypter.factory.CrypterFactory.CrypterType;
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 import de.bnd.crypter.factory.interfaces.Crypter;
-
+/**
+ * 
+ * @author Adrian, Marcel und Felix
+ *
+ */
 public class DecryptSecretMessageDemo {
 	
 	public static void main(String[] args) throws IllegalKeyException, CrypterException {
