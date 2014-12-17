@@ -12,7 +12,7 @@ abstract class AbstractCrypter implements Crypter {
 	private final String key;
 
 	public AbstractCrypter(String key) throws IllegalKeyException {
-		if (isKeyValid(key)&&key.matches("[A-Z]+"))
+		if (isKeyValid(key))
 			this.key = key;
 		else
 			throw new IllegalKeyException();
@@ -29,9 +29,16 @@ abstract class AbstractCrypter implements Crypter {
 	}
 	
 	private String validateMessage(String msg){
+		
+		String regex = getMessageValidationRegex();
 		msg = msg.toUpperCase();
-		msg = msg.replaceAll("[^A-Z]", "");
+		msg = msg.replaceAll(regex, "");
 		return msg;
+		
+	}
+	
+	protected String getMessageValidationRegex(){
+		return "[^A-Z]";
 	}
 
 	protected abstract String encryptStrategy(String message) throws CrypterException;

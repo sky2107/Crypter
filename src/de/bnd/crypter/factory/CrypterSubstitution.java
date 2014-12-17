@@ -31,7 +31,7 @@ class CrypterSubstitution extends AbstractCrypter {
 
 	@Override
 	public boolean isKeyValid(String key) {
-		return key.length()==26;
+		return key.length()==26&&key.matches("^[A-Z]+$");
 	}
 
 }

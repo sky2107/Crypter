@@ -59,7 +59,7 @@ class CrypterCaesar extends AbstractCrypter {
 
 	@Override
 	public boolean isKeyValid(String key) {
-		return key.length()==1;
+		return key.length()==1&&key.matches("^[A-Z]+$");
 	}
 
 }

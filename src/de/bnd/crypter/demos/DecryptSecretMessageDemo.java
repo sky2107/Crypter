@@ -28,7 +28,7 @@ public class DecryptSecretMessageDemo {
 		System.out.println("caesar-decrypt with L -> "+msg);
 		
 		msg = sub.decrypt(msg);
-		System.out.println("sub-decrypt with MNBVCXYLKJHGFDSAPOIUZTREWQS -> "+msg);
+		System.out.println("sub-decrypt with MNBVCXYLKJHGFDSAPOIUZTREWQ -> "+msg);
 		
 	}
 

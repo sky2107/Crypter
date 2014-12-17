@@ -28,7 +28,7 @@ public class CrypterTest {
 		sub = CrypterFactory.createCrypter(CrypterType.SUBSTITUTION,
 				"MNBVCXYLKJHGFDSAPOIUZTREWQ");
 		rev = CrypterFactory.createCrypter(CrypterType.REVERSE, "");
-		xor = CrypterFactory.createCrypter(CrypterType.XOR, "TPEISTCOOL");
+		xor = CrypterFactory.createCrypter(CrypterType.XOR, "TPERULES");
 		nil = CrypterFactory.createCrypter(CrypterType.NULL, "");
 	}
 

@@ -5,64 +5,25 @@ import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 
 class CrypterXOR extends AbstractCrypter {
 
+	private static final String[] map = { "@", "A", "B", "C", "D", "E", "F",
+			"G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+			"T", "U", "V", "W", "X", "Y", "Z", "[", "\\", "]", "^", "_" };
+
 	public CrypterXOR(String key) throws IllegalKeyException {
 		super(key);
 	}
 
 	private char mapInt(int i) {
-		int res;
-		switch (i) {
-		case 0:
-			res = '@';
-			break;
-		case 27:
-			res = '[';
-			break;
-		case 28:
-			res = '\\';
-			break;
-		case 29:
-			res = ']';
-			break;
-		case 30:
-			res = '^';
-			break;
-		case 31:
-			res = '_';
-			break;
-		default:
-			res = i + 'A' - 1;
-			break;
-		}
-		return (char) res;
+		return map[i].charAt(0);
 	}
 
 	private int mapChar(char c) {
-		int res;
-		switch (c) {
-		case '@':
-			res = 0;
-			break;
-		case '[':
-			res = 27;
-			break;
-		case '\\':
-			res = 28;
-			break;
-		case ']':
-			res = 29;
-			break;
-		case '^':
-			res = 30;
-			break;
-		case '_':
-			res = 31;
-			break;
-		default:
-			res = c - 'A' + 1;
-			break;
+		for (int i = 0; i < map.length; i++) {
+			if (map[i].charAt(0) == c) {
+				return i;
+			}
 		}
-		return res;
+		return -1;
 	}
 
 	private char encryptChar(char value, char key) {
@@ -83,12 +44,21 @@ class CrypterXOR extends AbstractCrypter {
 
 	@Override
 	public String decryptStrategy(String cypherText) throws CrypterException {
-		return encrypt(cypherText);
+		return encryptStrategy(cypherText);
 	}
 
 	@Override
 	public boolean isKeyValid(String key) {
-		return true;
+
+		if (key.matches("^[A-Z\\u0040\\u005B\\u005D\\u005E\\u005C\\u005F]+$"))
+			return true;
+		else
+			return false;
+		
 	}
 
+	@Override
+	protected String getMessageValidationRegex() {
+		return "[^A-Z\\u0040\\u005B\\u005D\\u005E\\u005C\\u005F]";
+	}
 }
