@@ -7,9 +7,11 @@ import java.util.List;
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.interfaces.Crypter;
 /**
- * class for handling List etc. with Iterators to create Strings decrypted
+ * Ein IterableCrypter, der auf eine über Strings iterierbare Struktur eine
+ * Entschlüsselung anwendet. Das Ergebnis ist in diesem IterableCrypter
+ * gespeichert.Diese Klasse selbst ist auch iterierbarr (über Strings).
  * 
- * @author Adrian, Marcel und Felix
+ * @author Adrian, Felix 
  *
  */
 public class IterableDecrypter implements Iterable<String> {
@@ -17,10 +19,10 @@ public class IterableDecrypter implements Iterable<String> {
 	private List<String> strings;
 
 	/**
-	 * 
-	 * @param iterable
-	 * @param crypter
-	 * @throws CrypterException
+	 * Erstellt eine Instanz.
+	 * @param iterable Stringliste die Verschlüsselt werden soll.
+	 * @param crypter Verschlüssler
+	 * @throws CrypterException Probleme beim verschlüsseln
 	 */
 	public IterableDecrypter(Iterable<String> iterable, Crypter crypter) throws CrypterException {
 		strings = new ArrayList<String>();
@@ -30,7 +32,7 @@ public class IterableDecrypter implements Iterable<String> {
 	}
 
 	/**
-	 * 
+	 * Gibt den Iterator auf dieser Menge zurück.
 	 */
 	public Iterator<String> iterator() {
 		return new CrypterIterator(strings.toArray(new String[0]));

@@ -15,11 +15,12 @@ import de.bnd.crypter.factory.CrypterFactory.CrypterType;
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 import de.bnd.crypter.factory.interfaces.Crypter;
+
 /**
  * 
- * All five crypters will be tested via JUNIT
+ * Cryptertest
  * 
- * @author Adrian, Marcel und Felix
+ * @author Adrian, Felix
  *
  */
 public class CrypterTest {
@@ -39,65 +40,75 @@ public class CrypterTest {
 		xor = CrypterFactory.createCrypter(CrypterType.XOR, "TPERULES");
 		nil = CrypterFactory.createCrypter(CrypterType.NULL, "");
 	}
-	
+
 	@Test
 	public void testEncryptStringCaesar() throws CrypterException {
-		testEncrypt(cae, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "LMNOPQRSTUVWXYZABCDEFGHIJK");
+		testEncrypt(cae, "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+				"LMNOPQRSTUVWXYZABCDEFGHIJK");
 	}
 
 	@Test
 	public void testEncryptStringSubstitution() throws CrypterException {
-		testEncrypt(sub, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "MNBVCXYLKJHGFDSAPOIUZTREWQ");
+		testEncrypt(sub, "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+				"MNBVCXYLKJHGFDSAPOIUZTREWQ");
 	}
 
 	@Test
 	public void testEncryptStringReverse() throws CrypterException {
-		testEncrypt(rev, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ZYXWVUTSRQPONMLKJIHGFEDCBA");
+		testEncrypt(rev, "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+				"ZYXWVUTSRQPONMLKJIHGFEDCBA");
 	}
 
 	@Test
 	public void testEncryptStringNull() throws CrypterException {
-		testEncrypt(nil, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		testEncrypt(nil, "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+				"ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	}
 
 	@Test
 	public void testEncryptStringXOR() throws CrypterException {
-		testEncrypt(xor, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "URFVPJB[]ZN^XBJCEBVF@ZRKMJ");
+		testEncrypt(xor, "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+				"URFVPJB[]ZN^XBJCEBVF@ZRKMJ");
 	}
 
 	@Test
 	public void testDecryptStringCaesar() throws CrypterException {
-		testDecrypt(cae,"LMNOPQRSTUVWXYZABCDEFGHIJK","ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		testDecrypt(cae, "LMNOPQRSTUVWXYZABCDEFGHIJK",
+				"ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	}
 
 	@Test
 	public void testDecryptStringSubstitution() throws CrypterException {
-		testDecrypt(sub,"MNBVCXYLKJHGFDSAPOIUZTREWQ","ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		testDecrypt(sub, "MNBVCXYLKJHGFDSAPOIUZTREWQ",
+				"ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	}
 
 	@Test
 	public void testDecryptStringReverse() throws CrypterException {
-		testDecrypt(rev,"ZYXWVUTSRQPONMLKJIHGFEDCBA","ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		testDecrypt(rev, "ZYXWVUTSRQPONMLKJIHGFEDCBA",
+				"ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	}
 
 	@Test
 	public void testDecryptStringNull() throws CrypterException {
-		testDecrypt(nil,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		testDecrypt(nil, "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+				"ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	}
 
 	@Test
 	public void testDecryptStringXOR() throws CrypterException {
-		testDecrypt(xor,"URFVPJB[]ZN^XBJCEBVF@ZRKMJ","ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		testDecrypt(xor, "URFVPJB[]ZN^XBJCEBVF@ZRKMJ",
+				"ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	}
-	
-	public void testDecrypt(Crypter c,String a, String b) throws CrypterException{
-		assertEquals(c.decrypt(a),
-				b);
+
+	public void testDecrypt(Crypter c, String a, String b)
+			throws CrypterException {
+		assertEquals(c.decrypt(a), b);
 	}
-	
-	public void testEncrypt(Crypter c,String a, String b) throws CrypterException{
-		assertEquals(c.encrypt(a),
-				b);
+
+	public void testEncrypt(Crypter c, String a, String b)
+			throws CrypterException {
+		assertEquals(c.encrypt(a), b);
 	}
 
 	@Test
@@ -106,7 +117,7 @@ public class CrypterTest {
 		in.add("A");
 		in.add("B");
 		in.add("C");
-		assertEquals(cae.encrypt(in).toString(),"[L, M, N]");
+		assertEquals(cae.encrypt(in).toString(), "[L, M, N]");
 	}
 
 	@Test
@@ -115,7 +126,7 @@ public class CrypterTest {
 		in.add("L");
 		in.add("M");
 		in.add("N");
-		assertEquals(cae.decrypt(in).toString(),"[A, B, C]");
+		assertEquals(cae.decrypt(in).toString(), "[A, B, C]");
 	}
 
 }

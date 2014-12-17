@@ -6,13 +6,17 @@ import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 import de.bnd.crypter.factory.interfaces.Crypter;
 
+/**
+ * XOR Crypter Demo.
+ * 
+ * @author Adrian, Felix
+ */
 public class XorCrypterDemo {
 
 	public static void main(String[] args) throws IllegalKeyException,
 			CrypterException {
 
-		Crypter xor = CrypterFactory.createCrypter(CrypterType.XOR,
-				"TPERULES");
+		Crypter xor = CrypterFactory.createCrypter(CrypterType.XOR, "TPERULES");
 
 		String msg = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		System.out.println(msg);

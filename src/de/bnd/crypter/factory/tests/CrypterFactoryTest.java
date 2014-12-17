@@ -10,6 +10,11 @@ import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 import de.bnd.crypter.factory.interfaces.Crypter;
 
+/**
+ * Crypterfactorytest
+ * @author Adrian, Felix
+ *
+ */
 public class CrypterFactoryTest {
 
 	Crypter cae;

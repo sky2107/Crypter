@@ -8,31 +8,30 @@ import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 import de.bnd.crypter.factory.interfaces.Crypter;
 
 /**
- * Crypter Factory class like order in the task
+ * Crypterfactory
  * 
- * with enums
- * 
- * @author Adrian, Marcel und Felix
+ * @author Adrian, Felix
  *
  */
 public class CrypterFactory {
 
 	/**
-	 * Crypter types
+	 * Cryptertypen
 	 */
 	public enum CrypterType {
 		CAESAR, SUBSTITUTION, REVERSE, XOR, NULL
 	}
 
 	/**
-	 * 
-	 * @param type
-	 * @param key
-	 * @return
+	 * Baut einen Crypter auf und gibt ihn zurück
+	 * @param type Typ
+	 * @param key Schlüssel
+	 * @return Crypter 
 	 * @throws CrypterException
 	 * @throws IllegalKeyException
 	 */
-	public static Crypter createCrypter(CrypterType type, String key) throws CrypterException, IllegalKeyException {
+	public static Crypter createCrypter(CrypterType type, String key)
+			throws CrypterException, IllegalKeyException {
 
 		switch (type) {
 		case CAESAR:

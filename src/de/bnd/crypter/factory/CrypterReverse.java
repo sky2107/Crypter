@@ -3,16 +3,15 @@ package de.bnd.crypter.factory;
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 /**
- * Just reverses the String
- * this crypter
+ * Reversecrypter
  * 
- * @author Adrian, Marcel und Felix
+ * @author Adrian, Felix
  *
  */
 class CrypterReverse extends AbstractCrypter {
 
 	/**
-	 * 
+	 * Konstruktor.
 	 * @throws IllegalKeyException
 	 */
 	public CrypterReverse() throws IllegalKeyException {
@@ -30,9 +29,9 @@ class CrypterReverse extends AbstractCrypter {
 	}
 	
 	/**
-	 * 
-	 * @param s
-	 * @return
+	 * Spiegelt einen String
+	 * @param s String
+	 * @return gespiegelter String
 	 */
 	private String mirrorString(String s){
 		StringBuilder b = new StringBuilder();

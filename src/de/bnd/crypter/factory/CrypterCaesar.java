@@ -8,14 +8,14 @@ import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 /**
  * Caesar crypter
  * 
- * @author Adrian, Marcel und Felix
+ * @author Adrian, Felix
  *
  */
 class CrypterCaesar extends AbstractCrypter {
 
 	/**
-	 * 
-	 * @param key
+	 * Konstruktor
+	 * @param key Schlüssel
 	 * @throws IllegalKeyException
 	 */
 	public CrypterCaesar(String key) throws IllegalKeyException {
@@ -33,25 +33,28 @@ class CrypterCaesar extends AbstractCrypter {
 	}
 
 	/**
-	 * 
-	 * @param key
-	 * @throws IllegalKeyException
+	 * Verschlüsselt einen einzelnen Char
+	 * @param x Char
+	 * @return verschlüsselter Char
 	 */
 	private char encryptChar(char x) {
 		return convertChar(x, (val, k) -> (val + k));
 	}
 
 	/**
-	 * 
-	 * @param x
-	 * @return
+	 * Entschlüsselt einen einzelnen Char
+	 * @param x Char
+	 * @return entschlüsselter Char
 	 */
 	private char decryptChar(char x) {
 		return convertChar(x, (val, k) -> (val - k));
 	}
 
 	/**
-	 * 
+	 *  konvertiert einen Char (verschiebt ihn)
+	 * @param x char
+	 * @param f Verschiebungsfunktion
+	 * @return verschobener Char
 	 */
 	private char convertChar(char x, BiFunction<Integer, Integer, Integer> f) {
 		int val = charToInt(x);
@@ -61,10 +64,10 @@ class CrypterCaesar extends AbstractCrypter {
 	}
 
 	/**
-	 * 
-	 * @param message
-	 * @param f
-	 * @return
+	 * konvertiert einen String (verschiebt ihn)
+	 * @param message String
+	 * @param f Verschiebungsfunktion
+	 * @return verschobener String
 	 * @throws CrypterException
 	 */
 	private String convertString(String message, Function<Character, Character> f) throws CrypterException {
@@ -80,18 +83,18 @@ class CrypterCaesar extends AbstractCrypter {
 	}
 
 	/**
-	 * 
-	 * @param c
-	 * @return
+	 * int to char wobei A = 0
+	 * @param c int
+	 * @return char
 	 */
 	private char intToChar(int c) {
 		return (char) (c + 'A');
 	}
 
 	/**
-	 * 
-	 * @param c
-	 * @return
+	 * char to int wobei A = 0
+	 * @param c char
+	 * @return int
 	 */
 	private int charToInt(char c) {
 		return c - 'A';

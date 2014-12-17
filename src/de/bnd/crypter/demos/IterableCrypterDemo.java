@@ -10,8 +10,8 @@ import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 import de.bnd.crypter.factory.interfaces.Crypter;
 import de.bnd.crypter.factory.iterators.IterableCrypter;
 /**
- * 
- * @author Adrian, Marcel und Felix
+ * Demo zum Iterator.
+ * @author Adrian, Felix
  *
  */
 public class IterableCrypterDemo {

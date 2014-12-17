@@ -8,9 +8,9 @@ import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 import de.bnd.crypter.factory.interfaces.Crypter;
 
 /**
- * Abstracte class to crypt
+ * Abstrakte Crypterklasse
  * 
- * @author Adrian, Marcel und Felix
+ * @author Adrian, Felix
  *
  */
 abstract class AbstractCrypter implements Crypter {
@@ -18,8 +18,8 @@ abstract class AbstractCrypter implements Crypter {
 	private final String key;
 
 	/**
-	 * 
-	 * @param key
+	 * Konstruktor.
+	 * @param key Schlüssel
 	 * @throws IllegalKeyException
 	 */
 	public AbstractCrypter(String key) throws IllegalKeyException {
@@ -30,32 +30,26 @@ abstract class AbstractCrypter implements Crypter {
 	}
 
 	/**
-	 * 
-	 * @param key
-	 * @return
+	 * Zeigt an ob ein Schlüssel gültig ist.
+	 * @param key Schlüssel
+	 * @return true, wenn gültig
 	 */
 	protected abstract boolean isKeyValid(String key);
 
-	/**
-	 * 
-	 */
 	public String encrypt(String message) throws CrypterException {
 		return encryptStrategy(validateMessage(message,
 				getMessageReplaceRegexEncrypt()));
 	}
 
-	/**
-	 * 
-	 */
 	public String decrypt(String message) throws CrypterException {
 		return decryptStrategy(validateMessage(message,
 				getMessageReplaceRegexDecrypt()));
 	}
 
 	/**
-	 * 
-	 * @param msg
-	 * @return
+	 * korrigiert eine Nachricht. Großschribung und Ersetzung.
+	 * @param msg Nachricht
+	 * @return Ersetzung
 	 */
 	private String validateMessage(String msg, String replace){
 		
@@ -66,27 +60,35 @@ abstract class AbstractCrypter implements Crypter {
 		
 	}
 
+	/**
+	 * Holt eine Ersetzungsvorschrift für das Veerschlüsseln
+	 * @return Ersetzungsvorschrift als RegEx
+	 */
 	protected String getMessageReplaceRegexEncrypt() {
 		return "[^A-Z]";
 	}
 
+	/**
+	 * Holt eine Ersetzungsvorschrift für das Entschlüsseln
+	 * @return Ersetzungsvorschrift als RegEx
+	 */
 	protected String getMessageReplaceRegexDecrypt() {
 		return "[^A-Z]";
 	}
 
 	/**
-	 * 
-	 * @param message
-	 * @return
+	 * Die VerschlüsselungsStrategie
+	 * @param message NAchricht
+	 * @return verschlüsselte Nachricht
 	 * @throws CrypterException
 	 */
 	protected abstract String encryptStrategy(String message)
 			throws CrypterException;
 
 	/**
-	 * 
-	 * @param cypherText
-	 * @return
+	 * Die Entschlüsselungsstrategie
+	 * @param cypherText Nachricht
+	 * @return entschlüsselte Nachricht
 	 * @throws CrypterException
 	 */
 	protected abstract String decryptStrategy(String cypherText)

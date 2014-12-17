@@ -4,17 +4,17 @@ import java.util.List;
 
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
+
 /**
- * Null crypter
+ * Nullcrypter
  * 
- * with a constant key A
- * 
- * @author Adrian, Marcel und Felix
+ * @author Adrian, Felix
  *
  */
 class CrypterNull extends AbstractCrypter {
 
 	/**
+	 * Konstruktor
 	 * 
 	 * @throws IllegalKeyException
 	 */
@@ -38,7 +38,8 @@ class CrypterNull extends AbstractCrypter {
 	}
 
 	@Override
-	public List<String> decrypt(List<String> cypherTexte) throws CrypterException {
+	public List<String> decrypt(List<String> cypherTexte)
+			throws CrypterException {
 		return cypherTexte;
 	}
 

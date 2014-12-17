@@ -3,16 +3,16 @@ package de.bnd.crypter.factory;
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 /**
- * Substituation cryper the key must be 26 items long
+ * Substituationscrypter
  * 
- * @author Adrian, Marcel und Felix
+ * @author Adrian, Felix
  *
  */
 class CrypterSubstitution extends AbstractCrypter {
 
 	/**
-	 * 
-	 * @param key
+	 * Konstruktor
+	 * @param key Schlüssel
 	 * @throws IllegalKeyException
 	 */
 	public CrypterSubstitution(String key) throws IllegalKeyException {
