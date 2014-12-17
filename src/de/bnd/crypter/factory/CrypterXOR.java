@@ -78,7 +78,7 @@ class CrypterXOR extends AbstractCrypter {
 	@Override
 	public boolean isKeyValid(String key) {
 
-		if (key.matches("^[A-Z\\u0040\\u005B\\u005D\\u005E\\u005C\\u005F]+$"))
+		if (key.matches("^[A-Z]+$"))
 			return true;
 		else
 			return false;
@@ -86,7 +86,7 @@ class CrypterXOR extends AbstractCrypter {
 	}
 
 	@Override
-	protected String getMessageValidationRegex() {
+	protected String getMessageReplaceRegexDecrypt() {
 		return "[^A-Z\\u0040\\u005B\\u005D\\u005E\\u005C\\u005F]";
 	}
 }

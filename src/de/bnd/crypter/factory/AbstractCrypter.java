@@ -6,6 +6,7 @@ import java.util.List;
 import de.bnd.crypter.factory.exceptions.CrypterException;
 import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 import de.bnd.crypter.factory.interfaces.Crypter;
+
 /**
  * Abstracte class to crypt
  * 
@@ -22,7 +23,7 @@ abstract class AbstractCrypter implements Crypter {
 	 * @throws IllegalKeyException
 	 */
 	public AbstractCrypter(String key) throws IllegalKeyException {
-		if (key!=null&&isKeyValid(key))
+		if (key != null && isKeyValid(key))
 			this.key = key;
 		else
 			throw new IllegalKeyException();
@@ -34,33 +35,42 @@ abstract class AbstractCrypter implements Crypter {
 	 * @return
 	 */
 	protected abstract boolean isKeyValid(String key);
+
 	/**
 	 * 
 	 */
-	public String encrypt(String message) throws CrypterException{
-		return encryptStrategy(validateMessage(message));
+	public String encrypt(String message) throws CrypterException {
+		return encryptStrategy(validateMessage(message,
+				getMessageReplaceRegexEncrypt()));
 	}
+
 	/**
 	 * 
 	 */
-	public String decrypt(String message) throws CrypterException{
-		return decryptStrategy(validateMessage(message));
+	public String decrypt(String message) throws CrypterException {
+		return decryptStrategy(validateMessage(message,
+				getMessageReplaceRegexDecrypt()));
 	}
+
 	/**
 	 * 
 	 * @param msg
 	 * @return
 	 */
-	private String validateMessage(String msg){
+	private String validateMessage(String msg, String replace){
 		
-		String regex = getMessageValidationRegex();
+		String regex = replace;
 		msg = msg.toUpperCase();
 		msg = msg.replaceAll(regex, "");
 		return msg;
 		
 	}
-	
-	protected String getMessageValidationRegex(){
+
+	protected String getMessageReplaceRegexEncrypt() {
+		return "[^A-Z]";
+	}
+
+	protected String getMessageReplaceRegexDecrypt() {
 		return "[^A-Z]";
 	}
 
@@ -70,7 +80,8 @@ abstract class AbstractCrypter implements Crypter {
 	 * @return
 	 * @throws CrypterException
 	 */
-	protected abstract String encryptStrategy(String message) throws CrypterException;
+	protected abstract String encryptStrategy(String message)
+			throws CrypterException;
 
 	/**
 	 * 
@@ -78,7 +89,8 @@ abstract class AbstractCrypter implements Crypter {
 	 * @return
 	 * @throws CrypterException
 	 */
-	protected abstract String decryptStrategy(String cypherText) throws CrypterException;
+	protected abstract String decryptStrategy(String cypherText)
+			throws CrypterException;
 
 	@Override
 	public List<String> encrypt(List<String> messages) throws CrypterException {
@@ -90,7 +102,8 @@ abstract class AbstractCrypter implements Crypter {
 	}
 
 	@Override
-	public List<String> decrypt(List<String> cypherTexte) throws CrypterException {
+	public List<String> decrypt(List<String> cypherTexte)
+			throws CrypterException {
 		List<String> result = new ArrayList<String>();
 		for (String s : cypherTexte) {
 			result.add(decrypt(s));
