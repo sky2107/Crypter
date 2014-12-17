@@ -74,12 +74,12 @@ public class CrypterTest {
 
 	@Test
 	public void testDecryptStringNull() throws CrypterException {
-		testDecrypt(nil,"URFVPJB[]ZN^XBJCEBVF@ZRKMJ","ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		testDecrypt(nil,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 	}
 
 	@Test
 	public void testDecryptStringXOR() throws CrypterException {
-		testDecrypt(xor,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+		testDecrypt(xor,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","URFVPJB[]ZN^XBJCEBVF@ZRKMJ");
 	}
 	
 	public void testDecrypt(Crypter c,String a, String b) throws CrypterException{
