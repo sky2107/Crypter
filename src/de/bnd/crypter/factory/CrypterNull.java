@@ -1,19 +1,18 @@
-package de.bnd.crypter.implementations;
+package de.bnd.crypter.factory;
 
 import java.util.List;
 
-import de.bnd.crypter.exceptions.CrypterException;
-import de.bnd.crypter.exceptions.IllegalKeyException;
-import de.bnd.crypter.interfaces.Crypter;
+import de.bnd.crypter.factory.exceptions.CrypterException;
+import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 
-public class CrypterNull extends AbstractCrypter {
+class CrypterNull extends AbstractCrypter {
 
 	public CrypterNull() throws IllegalKeyException {
-		super(" ");
+		super("A");
 	}
 
 	@Override
-	public String encrypt(String message) throws CrypterException {
+	public String encryptStrategy(String message) throws CrypterException {
 		return message;
 	}
 
@@ -23,7 +22,7 @@ public class CrypterNull extends AbstractCrypter {
 	}
 
 	@Override
-	public String decrypt(String cypherText) throws CrypterException {
+	public String decryptStrategy(String cypherText) throws CrypterException {
 		return cypherText;
 	}
 

@@ -1,15 +1,14 @@
-package de.bnd.crypter.implementations;
+package de.bnd.crypter.factory;
 
-import de.bnd.crypter.exceptions.CrypterException;
-import de.bnd.crypter.exceptions.IllegalKeyException;
+import de.bnd.crypter.factory.exceptions.CrypterException;
+import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 
-public class CrypterXOR extends AbstractCrypter {
-	;
+class CrypterXOR extends AbstractCrypter {
 
 	public CrypterXOR(String key) throws IllegalKeyException {
 		super(key);
 	}
-	
+
 	private char mapInt(int i) {
 		int res;
 		switch (i) {
@@ -66,30 +65,25 @@ public class CrypterXOR extends AbstractCrypter {
 		return res;
 	}
 
+	private char encryptChar(char value, char key) {
+		int v = mapChar(value);
+		int k = mapChar(key);
+		return mapInt(k ^ v);
+	}
+
 	@Override
-	public String encrypt(String message) throws CrypterException {
+	public String encryptStrategy(String message) throws CrypterException {
 		StringBuilder s = new StringBuilder();
 		for (int i = 0; i < message.length(); i++) {
-			int m = mapChar(message.charAt(i));
-			int k = mapChar(getKey().charAt(i % getKey().length()));
-			int v = m ^ k;
-			s.append(mapInt(v));
+			s.append(encryptChar(message.charAt(i),
+					getKey().charAt(i % getKey().length())));
 		}
 		return s.toString();
 	}
 
 	@Override
-	public String decrypt(String cypherText) throws CrypterException {
-		StringBuilder s = new StringBuilder();
-
-		for (int i = 0; i < cypherText.length(); i++) {
-			int c = mapChar(cypherText.charAt(i));
-			int k = mapChar(getKey().charAt(i % getKey().length()));
-			int v = c ^ k;
-			s.append(mapInt(v));
-		}
-
-		return s.toString();
+	public String decryptStrategy(String cypherText) throws CrypterException {
+		return encrypt(cypherText);
 	}
 
 	@Override

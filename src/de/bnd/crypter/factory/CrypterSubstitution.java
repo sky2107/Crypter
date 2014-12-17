@@ -1,16 +1,16 @@
-package de.bnd.crypter.implementations;
+package de.bnd.crypter.factory;
 
-import de.bnd.crypter.exceptions.CrypterException;
-import de.bnd.crypter.exceptions.IllegalKeyException;
+import de.bnd.crypter.factory.exceptions.CrypterException;
+import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 
-public class CrypterSubstitution extends AbstractCrypter {
+class CrypterSubstitution extends AbstractCrypter {
 
 	public CrypterSubstitution(String key) throws IllegalKeyException {
 		super(key);
 	}
 
 	@Override
-	public String encrypt(String message) throws CrypterException {
+	public String encryptStrategy(String message) throws CrypterException {
 		StringBuilder s = new StringBuilder();
 		for (int i = 0; i < message.length(); i++) {
 			int pos = message.charAt(i) - 'A';
@@ -20,7 +20,7 @@ public class CrypterSubstitution extends AbstractCrypter {
 	}
 
 	@Override
-	public String decrypt(String cypherText) throws CrypterException {
+	public String decryptStrategy(String cypherText) throws CrypterException {
 		StringBuilder s = new StringBuilder();
 		for (int i = 0; i < cypherText.length(); i++) {
 			int pos = getKey().indexOf(cypherText.charAt(i));
@@ -31,7 +31,7 @@ public class CrypterSubstitution extends AbstractCrypter {
 
 	@Override
 	public boolean isKeyValid(String key) {
-		return true;
+		return key.length()==26;
 	}
 
 }

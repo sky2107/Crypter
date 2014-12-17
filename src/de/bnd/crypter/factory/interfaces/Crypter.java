@@ -1,8 +1,8 @@
-package de.bnd.crypter.interfaces;
+package de.bnd.crypter.factory.interfaces;
 
 import java.util.List;
 
-import de.bnd.crypter.exceptions.CrypterException;
+import de.bnd.crypter.factory.exceptions.CrypterException;
 
 /**
  * Grundlegendes Interface, um Verschl¨usselung durchzuf¨uhren. Mit Hilfe dieses

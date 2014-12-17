@@ -1,21 +1,21 @@
-package de.bnd.crypter.implementations;
+package de.bnd.crypter.factory;
 
-import de.bnd.crypter.exceptions.CrypterException;
-import de.bnd.crypter.exceptions.IllegalKeyException;
+import de.bnd.crypter.factory.exceptions.CrypterException;
+import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 
-public class CrypterReverse extends AbstractCrypter {
+class CrypterReverse extends AbstractCrypter {
 
 	public CrypterReverse() throws IllegalKeyException {
-		super(" ");
+		super("A");
 	}
 
 	@Override
-	public String encrypt(String message) throws CrypterException {
+	public String encryptStrategy(String message) throws CrypterException {
 		return mirrorString(message);
 	}
 
 	@Override
-	public String decrypt(String cypherText) throws CrypterException {
+	public String decryptStrategy(String cypherText) throws CrypterException {
 		return encrypt(cypherText);
 	}
 	

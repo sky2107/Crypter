@@ -1,8 +1,8 @@
-package de.bnd.crypter.iterators;
+package de.bnd.crypter.factory.iterators;
 
 import java.util.Iterator;
 
-public class CrypterIterator implements Iterator<String> {
+class CrypterIterator implements Iterator<String> {
 
 	private int pos = 0;
 	private String[] strings;

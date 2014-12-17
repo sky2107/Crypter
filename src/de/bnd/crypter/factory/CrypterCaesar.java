@@ -1,24 +1,24 @@
-package de.bnd.crypter.implementations;
+package de.bnd.crypter.factory;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import de.bnd.crypter.exceptions.CrypterException;
-import de.bnd.crypter.exceptions.IllegalKeyException;
+import de.bnd.crypter.factory.exceptions.CrypterException;
+import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 
-public class CrypterCaesar extends AbstractCrypter {
+class CrypterCaesar extends AbstractCrypter {
 
 	public CrypterCaesar(String key) throws IllegalKeyException {
 		super(key);
 	}
 
 	@Override
-	public String encrypt(String message) throws CrypterException {
+	public String encryptStrategy(String message) throws CrypterException {
 		return convertString(message, (c) -> (encryptChar(c)));
 	}
 
 	@Override
-	public String decrypt(String cypherText) throws CrypterException {
+	public String decryptStrategy(String cypherText) throws CrypterException {
 		return convertString(cypherText, (c) -> (decryptChar(c)));
 	}
 
@@ -59,7 +59,7 @@ public class CrypterCaesar extends AbstractCrypter {
 
 	@Override
 	public boolean isKeyValid(String key) {
-		return true;
+		return key.length()==1;
 	}
 
 }
