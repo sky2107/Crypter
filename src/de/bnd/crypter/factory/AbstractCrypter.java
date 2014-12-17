@@ -22,7 +22,7 @@ abstract class AbstractCrypter implements Crypter {
 	 * @throws IllegalKeyException
 	 */
 	public AbstractCrypter(String key) throws IllegalKeyException {
-		if (isKeyValid(key))
+		if (key!=null&&isKeyValid(key))
 			this.key = key;
 		else
 			throw new IllegalKeyException();

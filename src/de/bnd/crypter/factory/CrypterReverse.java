@@ -28,6 +28,7 @@ class CrypterReverse extends AbstractCrypter {
 	public String decryptStrategy(String cypherText) throws CrypterException {
 		return encrypt(cypherText);
 	}
+	
 	/**
 	 * 
 	 * @param s

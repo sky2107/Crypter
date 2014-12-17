@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -12,6 +13,7 @@ import org.junit.Test;
 import de.bnd.crypter.factory.CrypterFactory;
 import de.bnd.crypter.factory.CrypterFactory.CrypterType;
 import de.bnd.crypter.factory.exceptions.CrypterException;
+import de.bnd.crypter.factory.exceptions.IllegalKeyException;
 import de.bnd.crypter.factory.interfaces.Crypter;
 /**
  * 
@@ -37,7 +39,7 @@ public class CrypterTest {
 		xor = CrypterFactory.createCrypter(CrypterType.XOR, "TPERULES");
 		nil = CrypterFactory.createCrypter(CrypterType.NULL, "");
 	}
-
+	
 	@Test
 	public void testEncryptStringCaesar() throws CrypterException {
 		testEncrypt(cae, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "LMNOPQRSTUVWXYZABCDEFGHIJK");
@@ -99,13 +101,21 @@ public class CrypterTest {
 	}
 
 	@Test
-	public void testEncryptListOfString() {
-		fail("Not yet implemented");
+	public void testEncryptListOfString() throws CrypterException {
+		List<String> in = new ArrayList<>();
+		in.add("A");
+		in.add("B");
+		in.add("C");
+		assertEquals(cae.encrypt(in).toString(),"[L, M, N]");
 	}
 
 	@Test
-	public void testDecryptListOfString() {
-		fail("Not yet implemented");
+	public void testDecryptListOfString() throws CrypterException {
+		List<String> in = new ArrayList<>();
+		in.add("L");
+		in.add("M");
+		in.add("N");
+		assertEquals(cae.decrypt(in).toString(),"[A, B, C]");
 	}
 
 }
